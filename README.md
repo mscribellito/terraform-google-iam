@@ -83,7 +83,7 @@ No resources.
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| <a name="input_bindings"></a> [bindings](#input\_bindings) | IAM policy document for Google Cloud IAM resources | <pre>list(object({<br>    member   = list(string)<br>    role     = list(string)<br>    resource = list(string)<br>  }))</pre> | n/a | yes |
+| <a name="input_bindings"></a> [bindings](#input\_bindings) | IAM policy document bindings for Google Cloud IAM resources | <pre>list(object({<br>    member   = list(string)<br>    role     = list(string)<br>    resource = list(string)<br>  }))</pre> | n/a | yes |
 
 ## Outputs
 
