@@ -1,11 +1,11 @@
 locals {
 
   projects = [
-    for policy in var.policies : policy if split("=>", policy.resource[0])[0] == "project"
+    for binding in var.bindings : binding if split("=>", binding.resource[0])[0] == "project"
   ]
 
   storage_buckets = [
-    for policy in var.policies : policy if split("=>", policy.resource[0])[0] == "storage_bucket"
+    for binding in var.bindings : binding if split("=>", binding.resource[0])[0] == "storage_bucket"
   ]
 
 }
@@ -13,15 +13,15 @@ locals {
 module "project" {
   source = "./modules/project"
 
-  for_each = { for i, policy in local.projects : "binding-${i + 1}" => policy }
+  for_each = { for i, binding in local.projects : "binding-${i + 1}" => binding }
 
   bindings = each.value
 }
 
 module "storage_bucket" {
-  source = "./modules/project"
+  source = "./modules/storage_bucket"
 
-  for_each = { for i, policy in local.storage_buckets : "binding-${i + 1}" => policy }
+  for_each = { for i, binding in local.storage_buckets : "binding-${i + 1}" => binding }
 
   bindings = each.value
 }

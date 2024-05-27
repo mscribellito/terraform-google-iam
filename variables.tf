@@ -1,4 +1,4 @@
-variable "policies" {
+variable "bindings" {
   type = list(object({
     member   = list(string)
     role     = list(string)

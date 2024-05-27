@@ -1,6 +1,6 @@
 # Terraform Google Cloud IAM Policy Module
 
-This module makes it easier to manage IAM policies for members, roles, and resources on Google Cloud.
+This module makes it easier to manage IAM policies for resources on Google Cloud.
 
 ## Features
 
@@ -11,8 +11,53 @@ Support for:
 
 ## Usage
 
+An IAM policy consists of multiple bindings. Bindings consist of `member`, `role`, and `resource`.
+
+`member` - the [principals](https://cloud.google.com/iam/docs/principal-identifiers) that will be granted the privileges in the role. Principals are users, service accounts, groups, etc.
+
+`role` - the [roles](https://cloud.google.com/iam/docs/understanding-roles) that will be granted to the members.
+
+`resource` - the resources to bind the IAM policy to.
+
 ```hcl
+module "policy" {
+  source = "github.com/mscribellito/terraform-google-iam-policy"
+
+  bindings = [
+    {
+      member = [
+        "user:user@domain.com",
+        "group:admins@domain.com"
+      ]
+      role = [
+        "roles/owner"
+      ]
+      resource = [
+        "project=>project1",
+        "project=>project2"
+      ]
+    },
+    {
+      member = [
+        "serviceAccount:gitlab@domain.com"
+      ]
+      role = [
+        "roles/storage.objectCreator"
+      ]
+      resource = [
+        "storage_bucket=>backups"
+      ]
+    }
+  ]
+}
 ```
+
+### Resource Identifiers
+
+| Resource | Identifier |
+| -------- | ---------- |
+| project | Project Id |
+| storage_bucket | Storage bucket name |
 
 <!-- BEGIN_TF_DOCS -->
 ## Requirements
