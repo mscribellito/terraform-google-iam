@@ -4,5 +4,5 @@ variable "bindings" {
     role     = list(string)
     resource = list(string)
   }))
-  description = "IAM policy document for Google Cloud IAM resources"
+  description = "IAM policy document bindings for Google Cloud IAM resources"
 }

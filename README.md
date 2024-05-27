@@ -13,11 +13,11 @@ Support for:
 
 An IAM policy consists of multiple bindings. Bindings consist of `member`, `role`, and `resource`.
 
-`member` - the [principals](https://cloud.google.com/iam/docs/principal-identifiers) that will be granted the privileges in the role. Principals are users, service accounts, groups, etc.
+`member` - The [principals](https://cloud.google.com/iam/docs/principal-identifiers) that will be granted the privileges in the role. Principals are users, service accounts, groups, etc.
 
-`role` - the [roles](https://cloud.google.com/iam/docs/understanding-roles) that will be granted to the members.
+`role` - The [roles](https://cloud.google.com/iam/docs/understanding-roles) that will be granted to the members.
 
-`resource` - the resources to bind the IAM policy to.
+`resource` - The resources to bind the IAM policy to. Each binding should be scoped to resources of the same type. Resources are identified using the convention `resource_type=>resource_identifier`.
 
 ```hcl
 module "policy" {
@@ -52,10 +52,10 @@ module "policy" {
 }
 ```
 
-### Resource Identifiers
+### Resource Types and Identifiers
 
-| Resource | Identifier |
-| -------- | ---------- |
+| Type | Identifier |
+| ---- | ---------- |
 | project | Project Id |
 | storage_bucket | Storage bucket name |
 
