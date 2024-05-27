@@ -27,7 +27,9 @@ No providers.
 
 ## Modules
 
-No modules.
+| Name | Source | Version |
+|------|--------|---------|
+| <a name="module_project"></a> [project](#module\_project) | ./modules/project | n/a |
 
 ## Resources
 
@@ -35,11 +37,15 @@ No resources.
 
 ## Inputs
 
-No inputs.
+| Name | Description | Type | Default | Required |
+|------|-------------|------|---------|:--------:|
+| <a name="input_policies"></a> [policies](#input\_policies) | IAM policy document for Google Cloud IAM resources | <pre>list(object({<br>    member   = list(string)<br>    role     = list(string)<br>    resource = optional(list(string))<br>  }))</pre> | n/a | yes |
 
 ## Outputs
 
-No outputs.
+| Name | Description |
+|------|-------------|
+| <a name="output_helper"></a> [helper](#output\_helper) | n/a |
 <!-- END_TF_DOCS -->
 
 ## Contributing
