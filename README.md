@@ -1,20 +1,18 @@
-# Terraform Module Template
+# Terraform Google Cloud IAM Policy Module
 
-A GitHub **repository template** for scaffolding Terraform module creation using HashiCorp's recommended [standard structure](https://developer.hashicorp.com/terraform/language/modules/develop/structure).
+This module makes it easier to manage IAM policies for members, roles, and resources on Google Cloud.
 
 ## Features
 
-- Checks if Terraform code is properly formatted and validate with [setup-terraform](https://github.com/hashicorp/setup-terraform).
-- Generates documentation of Terraform code with [terraform-docs](https://github.com/terraform-docs/terraform-docs).
-- Performs static analysis of Terraform code with [tfsec](https://github.com/aquasecurity/tfsec).
-- Automates creating GitHub releases with [semantic-release](https://github.com/semantic-release/semantic-release).
+Support for:
+
+- Project
+- Storage Bucket
 
 ## Usage
 
-Use this template to scaffold a new Terraform module. Ensure you change the following:
-
-- Update [README.md](README.md) with description and usage.
-- Add Terraform code to [main.tf](main.tf), [variables.tf](variables.tf), and [outputs.tf](outputs.tf).
+```hcl
+```
 
 <!-- BEGIN_TF_DOCS -->
 ## Requirements
