@@ -28,6 +28,7 @@ No providers.
 | Name | Source | Version |
 |------|--------|---------|
 | <a name="module_project"></a> [project](#module\_project) | ./modules/project | n/a |
+| <a name="module_storage_bucket"></a> [storage\_bucket](#module\_storage\_bucket) | ./modules/project | n/a |
 
 ## Resources
 
