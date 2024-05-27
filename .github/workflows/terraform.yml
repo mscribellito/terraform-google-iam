@@ -73,6 +73,7 @@ jobs:
       uses: terraform-docs/gh-actions@v1.1.0
       with:
         git-push: true
+        recursive: true
 
   tfsec:
     name: tfsec
