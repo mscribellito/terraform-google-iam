@@ -1,20 +1,63 @@
-# Terraform Module Template
+# Terraform Google Cloud IAM Policy Module
 
-A GitHub **repository template** for scaffolding Terraform module creation using HashiCorp's recommended [standard structure](https://developer.hashicorp.com/terraform/language/modules/develop/structure).
+This module makes it easier to manage IAM policies for resources on Google Cloud.
 
 ## Features
 
-- Checks if Terraform code is properly formatted and validate with [setup-terraform](https://github.com/hashicorp/setup-terraform).
-- Generates documentation of Terraform code with [terraform-docs](https://github.com/terraform-docs/terraform-docs).
-- Performs static analysis of Terraform code with [tfsec](https://github.com/aquasecurity/tfsec).
-- Automates creating GitHub releases with [semantic-release](https://github.com/semantic-release/semantic-release).
+Support for:
+
+- Project
+- Storage Bucket
 
 ## Usage
 
-Use this template to scaffold a new Terraform module. Ensure you change the following:
+An IAM policy consists of multiple bindings. Bindings consist of `member`, `role`, and `resource`.
 
-- Update [README.md](README.md) with description and usage.
-- Add Terraform code to [main.tf](main.tf), [variables.tf](variables.tf), and [outputs.tf](outputs.tf).
+`member` - The [principals](https://cloud.google.com/iam/docs/principal-identifiers) that will be granted the privileges in the role. Principals are users, service accounts, groups, etc.
+
+`role` - The [roles](https://cloud.google.com/iam/docs/understanding-roles) that will be granted to the members.
+
+`resource` - The resources to bind the IAM policy to. Each binding should be scoped to resources of the same type. Resources are identified using the convention `resource_type=>resource_identifier`.
+
+```hcl
+module "policy" {
+  source = "github.com/mscribellito/terraform-google-iam-policy"
+
+  bindings = [
+    {
+      member = [
+        "user:user@domain.com",
+        "group:admins@domain.com"
+      ]
+      role = [
+        "roles/owner"
+      ]
+      resource = [
+        "project=>project1",
+        "project=>project2"
+      ]
+    },
+    {
+      member = [
+        "serviceAccount:gitlab@domain.com"
+      ]
+      role = [
+        "roles/storage.objectCreator"
+      ]
+      resource = [
+        "storage_bucket=>backups"
+      ]
+    }
+  ]
+}
+```
+
+### Resource Types and Identifiers
+
+| Type | Identifier |
+| ---- | ---------- |
+| project | Project Id |
+| storage_bucket | Storage bucket name |
 
 <!-- BEGIN_TF_DOCS -->
 ## Requirements
@@ -27,7 +70,10 @@ No providers.
 
 ## Modules
 
-No modules.
+| Name | Source | Version |
+|------|--------|---------|
+| <a name="module_project"></a> [project](#module\_project) | ./modules/project | n/a |
+| <a name="module_storage_bucket"></a> [storage\_bucket](#module\_storage\_bucket) | ./modules/storage_bucket | n/a |
 
 ## Resources
 
@@ -35,7 +81,9 @@ No resources.
 
 ## Inputs
 
-No inputs.
+| Name | Description | Type | Default | Required |
+|------|-------------|------|---------|:--------:|
+| <a name="input_bindings"></a> [bindings](#input\_bindings) | IAM policy document bindings for Google Cloud IAM resources | <pre>list(object({<br>    member   = list(string)<br>    role     = list(string)<br>    resource = list(string)<br>  }))</pre> | n/a | yes |
 
 ## Outputs
 
