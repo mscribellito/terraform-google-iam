@@ -1,9 +1,7 @@
 module "helper" {
   source = "../helper"
 
-  member   = var.member
-  role     = var.role
-  resource = var.resource
+  bindings = var.bindings
 }
 
 resource "google_project_iam_member" "project" {

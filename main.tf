@@ -11,7 +11,5 @@ module "project" {
 
   for_each = { for i, policy in local.project_policies : "binding-${i + 1}" => policy }
 
-  member   = each.value.member
-  role     = each.value.role
-  resource = each.value.resource
+  bindings = each.value
 }

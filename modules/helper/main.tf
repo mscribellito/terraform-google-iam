@@ -1,11 +1,11 @@
 locals {
 
   bindings = distinct(flatten([
-    for member in var.member
+    for member in var.bindings.member
     : [
-      for role in var.role
+      for role in var.bindings.role
       : [
-        for resource in var.resource
+        for resource in var.bindings.resource
         : {
           member   = member
           role     = role

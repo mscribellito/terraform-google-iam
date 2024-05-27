@@ -1,11 +1,7 @@
-variable "member" {
-  type = list(string)
-}
-
-variable "role" {
-  type = list(string)
-}
-
-variable "resource" {
-  type = list(string)
+variable "bindings" {
+  type = object({
+    member   = list(string)
+    role     = list(string)
+    resource = list(string)
+  })
 }
