@@ -4,4 +4,5 @@ variable "bindings" {
     role     = list(string)
     resource = list(string)
   })
+  description = "List of member, role, and resource bindings"
 }

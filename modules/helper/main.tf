@@ -1,5 +1,6 @@
 locals {
 
+  # Compute the Cartesian product of member, role, and resource
   bindings = distinct(flatten([
     for member in var.bindings.member
     : [
