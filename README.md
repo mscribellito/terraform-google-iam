@@ -37,7 +37,7 @@ No resources.
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| <a name="input_policies"></a> [policies](#input\_policies) | IAM policy document for Google Cloud IAM resources | <pre>list(object({<br>    member   = list(string)<br>    role     = list(string)<br>    resource = optional(list(string))<br>  }))</pre> | n/a | yes |
+| <a name="input_policies"></a> [policies](#input\_policies) | IAM policy document for Google Cloud IAM resources | <pre>list(object({<br>    member   = list(string)<br>    role     = list(string)<br>    resource = list(string)<br>  }))</pre> | n/a | yes |
 
 ## Outputs
 
